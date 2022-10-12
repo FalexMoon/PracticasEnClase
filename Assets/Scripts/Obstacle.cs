@@ -6,10 +6,18 @@ public class Obstacle : MonoBehaviour
 {
     public bool movement;
     float vel;
+    public float velocity;
 
     private void Start()
     {
-        vel = FindObjectOfType<Paralax>().paralaxVel;
+        try
+        {
+            vel = FindObjectOfType<Paralax>().paralaxVel;
+        }
+        catch
+        {
+            vel = velocity;
+        }
         Destroy(gameObject, 15f);
     }
 
@@ -24,6 +32,7 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(movement)
         transform.position = new Vector3(transform.localPosition.x - (vel / 1000), transform.position.y, 0);
     }
 }
