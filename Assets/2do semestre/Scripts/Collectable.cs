@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit : Obstacle
+public class Collectable : MonoBehaviour
 {
-    public override void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         print("Collected");
         Destroy(this.gameObject);
+
     }
 }
